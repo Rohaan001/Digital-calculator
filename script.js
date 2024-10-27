@@ -1,29 +1,62 @@
+var num1 = '';
+        var operator = '';
+        var num2 = '';
+        var screen = document.getElementById('screen');
 
-var expression = "";
+        function updateScreen(value) {
+            if (['+', '-', '*', '/'].includes(value)) {
+                operator = value;
+                screen.value = num1 + operator;
+            } else {
+                if (operator === '') {
+                    num1 += value;
+                    screen.value = num1;
+                } else {
+                    num2 += value;
+                    screen.value = num1 + operator + num2;
+                }
+            }
+        }
 
-function updateScreen(value) {
-    var screen = document.getElementById("screen");
-    expression += value;
-    screen.value = expression;
-}
+        function clearAll() {
+            num1 = '';
+            operator = '';
+            num2 = '';
+            screen.value = '';
+        }
 
-function calculate() {
-    var screen = document.getElementById("screen");
-    try {
-        expression = eval(expression).toString();
-        screen.value = expression;
-    } catch {
-        screen.value = "Error";
-        expression = ""; // Clear expression on error
-    }
-}
+        function clearLast() {
+            if (num2 !== '') {
+                num2 = num2.slice(0, -1);
+            } else if (operator !== '') {
+                operator = '';
+            } else {
+                num1 = num1.slice(0, -1);
+            }
+            screen.value = num1 + operator + num2;
+        }
 
-function clearAll() {
-    expression = "";
-    document.getElementById("screen").value = "";
-}
-
-function clearLast() {
-    expression = expression.slice(0, -1);
-    document.getElementById("screen").value = expression;
-}
+        function calculate() {
+            var result;
+            switch (operator) {
+                case '+':
+                    result = parseFloat(num1) + parseFloat(num2);
+                    break;
+                case '-':
+                    result = parseFloat(num1) - parseFloat(num2);
+                    break;
+                case '*':
+                    result = parseFloat(num1) * parseFloat(num2);
+                    break;
+                case '/':
+                    result = parseFloat(num1) / parseFloat(num2);
+                    break;
+                default:
+                    result = 'Undefined';
+                    
+            }
+            screen.value = result;
+            num1 = result.toString();
+            operator = '';
+            num2 = '';
+        }

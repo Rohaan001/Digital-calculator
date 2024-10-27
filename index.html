@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+ 
     <link rel="shortcut icon" href="server-icon/calculator-svgrepo-com.svg " type="image/x-icon">
 </head>
 <body>
     <div class="Calculator">
-        <div class="top"> 
+        <div class="top">
             <input type="text" id="screen" disabled>
         </div>
         <div class="bottom">
-            <button class="power" onclick="clearAll()">AC</button>
+            <button onclick="clearAll()">AC</button>
             <button class="power" onclick="clearLast()">C</button>
             <button class="power" onclick="updateScreen('.')">.</button>
             <button class="power" onclick="updateScreen('+')">+</button>
-            <button  onclick="updateScreen('7')">7</button>
+            <button onclick="updateScreen('7')">7</button>
             <button onclick="updateScreen('8')">8</button>
             <button onclick="updateScreen('9')">9</button>
             <button class="power" onclick="updateScreen('-')">-</button>
             <button onclick="updateScreen('4')">4</button>
             <button onclick="updateScreen('5')">5</button>
             <button onclick="updateScreen('6')">6</button>
-            <button class=" power" onclick="updateScreen('*')">*</button>
+            <button class="power" onclick="updateScreen('*')">*</button>
             <button onclick="updateScreen('1')">1</button>
             <button onclick="updateScreen('2')">2</button>
             <button onclick="updateScreen('3')">3</button>
@@ -34,9 +34,8 @@
             <button onclick="updateScreen('0')">0</button>
             <button onclick="updateScreen(')')"> ) </button>
             <button class="power" onclick="calculate()">=</button>
-
         </div>
     </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
